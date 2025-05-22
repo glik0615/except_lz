@@ -10,8 +10,10 @@ print('er2: Файл пустой')
 print('er3: Содержимое файла не совпадает с оригиналом')
 print('er4: Расщирение не соответствует формату файла')
 
+
 # Создаем класс, обрабвтывающий файл
 class Payment:
+
     def __init__(self):
         pass
     
@@ -24,7 +26,7 @@ class Payment:
             print("Возникла следующая ошибка:{er1}")
         
         else:
-            print("Ошибки не обнаружено")
+            print('Файл обработан')
     
     # Создание метода для проверки файла на наличие содержимого
     def processing2(self):
@@ -33,13 +35,15 @@ class Payment:
                 pd.read_csv(file)
         except EmptyDataError as er2:
             print('Возникла следующая ошибка:{er2}')
+        else:
+            print('Файл обработан')
 
 
     # Создание файла, который сравнит полученный датасет с оригиналом(Проверка названий столбцов)
     def processing3(self):
         # Читаем файлы и заносим названия столбцов в список
         orig = pd.read_csv('var5.csv')
-        my_file = pd.read_csv('file')
+        my_file = pd.read_csv('var3.csv')
         column_names_list_orig = orig.columns.tolist()
         column_names_list = my_file.columns.tolist()
         # Сравниваем списки
@@ -51,6 +55,8 @@ class Payment:
         except ValueError as er3:
             print('Возникла следующая ошибка:{er3}'
             ' Ожидалось:{column_names_list_orig}. Сравниваемый:{column_names_list}')
+        else:
+            print('Файл обработан')
 
     # Создание файла, который сравнит полученный датасет с оригиналом(Проверка типов данных столбцов)
     def processing4(self):
@@ -67,6 +73,8 @@ class Payment:
             except ValueError as er3:
                 print('Возникла следующая ошибка:{er3}'
                 ' Ожидалось:{orig_types}. Сравниваемый:{my_file_types}')
+            else:
+                print('Файл обработан')
 
     # Проверка расширения файла
     def proceessing5(self):
@@ -74,6 +82,8 @@ class Payment:
             pd.read_csv('file')
         except ValueError as er4:
             print('Возникла следующая ошибка:{er4}')
+        else:
+            print('Файл обработан')
 
     def main():
         
@@ -85,5 +95,4 @@ class Payment:
 
     if __name__ == "__main__":
         main()
-
 

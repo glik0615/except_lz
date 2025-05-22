@@ -1,4 +1,4 @@
-import ex  
+import ex
 def main():
     ex.main()
 
